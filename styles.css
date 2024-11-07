@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Colors */
+:root {
+  --color-green-200-lighter: hsl(148, 38%, 91%);
+  --color-green-600-medium: hsl(169, 82%, 27%);
+  --color-red: hsl(0, 66%, 54%);
+  --color-neutral-white: hsl(0, 0%, 100%);
+  --color-neutral-grey-500-medium: hsl(186, 15%, 59%);
+  --color-neutral-grey-900-darker: hsl(187, 24%, 22%);
+}
+
+body {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  background-color: var(--color-green-200-lighter);
+  color: var(--color-neutral-grey-900-darker);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 2rem;
+  padding: 2rem;
+  max-width: 310px;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background-color: var(--color-neutral-white);
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.container h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.form-group .query-options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+.form-group input,
+.form-group textarea {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-neutral-grey-500-medium);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Hide the default appearance of checkboxes and radio buttons */
+input[type="checkbox"],
+input[type="radio"] {
+  display: none;
+}
+
+/* Label styles for custom checkboxes */
+.custom-checkbox,
+.custom-radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Add SVG to checkboxes and radios */
+.custom-checkbox svg,
+.custom-radio svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2;
+  transition: stroke 0.3s;
+}
+
+button{
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--color-green-600-medium);
+  color: var(--color-neutral-white);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.message-container {
+  display: none;
+  margin-top: 2rem;
+  max-width: 300px;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--color-green-600-medium);
+  border-radius: 1rem;
+}
+
+.error {
+  display: none;
+  color: var(--color-red);
+}
+
+footer .attribution {
+  font-size: 0.73rem;
+  text-align: center;
+  opacity: 0.8;
+  color: #8c8c8c;
+  margin-top: 3rem;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
