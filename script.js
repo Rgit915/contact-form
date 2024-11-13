@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   form.addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent form submission for validation
+    const successMessage = document.getElementById("success-message");
+    successMessage.style.display = "none";
 
     // Track overall form validity
     let isValid = true;
@@ -91,10 +93,35 @@ document.addEventListener("DOMContentLoaded", function() {
     validateMessage();
     validateConsent();
 
+    // Attach input event listeners to clear errors on user input
+    function addClearErrorListener(fieldId, errorId) {
+      const field = document.getElementById(fieldId);
+      const errorField = document.getElementById(errorId);
+      field.addEventListener(field.type === "checkbox" ? "change" : "input", function() {
+        field.classList.remove("error");
+        errorField.style.display = "none";
+      });
+    }
+
+    // Apply clear error listeners for each field
+    addClearErrorListener("first-name", "first-name-error");
+    addClearErrorListener("last-name", "last-name-error");
+    addClearErrorListener("email-address", "email-error");
+    addClearErrorListener("message", "message-error");
+    addClearErrorListener("terms-conditions", "consent-error");
+
+    // Special case for query options
+    document.getElementsByName("query-type").forEach(option =>
+      option.addEventListener("change", function() {
+        document.getElementById("query-error").style.display = "none";
+      })
+    );
+
+
     // If all validations pass, submit the form
     if (isValid) {
-      document.getElementById("success-message").style.display = "block";
-      this.reset();
+      successMessage.style.display = "block";
+      form.reset();
     }
   });
 });
