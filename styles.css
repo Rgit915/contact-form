@@ -8,6 +8,7 @@
 :root {
   --color-green-200-lighter: hsl(148, 38%, 91%);
   --color-green-600-medium: hsl(169, 82%, 27%);
+  --color-green-700-darker: hsl(150, 38%, 17%);
   --color-red: hsl(0, 66%, 54%);
   --color-neutral-white: hsl(0, 0%, 100%);
   --color-neutral-grey-500-medium: hsl(186, 15%, 59%);
@@ -28,14 +29,33 @@ body {
   text-align: center;
   overflow-x: hidden;
 }
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.success-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.message-container {
+  display: none;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--color-green-600-medium);
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
 
 main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  margin-top: 2rem;
+  min-height: 60vh;
+  margin-top: 1rem;
   padding: 2rem;
   max-width: 310px;
   margin-bottom: 2rem;
@@ -56,10 +76,12 @@ main {
   margin-bottom: 1rem;
   font-weight: 700;
 }
+/* Container styling */
 #contact-form {
   max-width: 300px;
 }
 
+/* Form group layout and alignment */
 .form-group {
   margin-bottom: 1rem;
   display: flex;
@@ -67,27 +89,54 @@ main {
   align-items: flex-start;
 }
 
+/* Radio options container styling */
 .form-group .query-options {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
   width: 100%;
 }
 
+/* Individual radio option styling */
 .form-group .query-options .radio-option {
   border: 1px solid var(--color-neutral-grey-500-medium);
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
   width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+
 }
 
+/* Hide default checkboxes and radio buttons */
+/* input[type="checkbox"],
+input[type="radio"] {
+  display: none;
+} */
+
+/* Apply styles to .radio-option when the associated radio input is checked */
+.query-options input[type="radio"]:checked + .radio-option {
+  background-color: var(--color-green-200-lighter);
+  border-color: var(--color-green-600-medium);
+}
+
+/* Change SVG icon color when the radio is checked */
+.query-options input[type="radio"]:checked + .radio-option label svg path {
+  fill: var(--color-green-600-medium); /* Checked SVG color */
+}
+
+
+/* General label styling */
 .form-group label {
   margin-bottom: 0.5rem;
   font-size: 1rem;
   display: flex;
   gap: 0.5rem;
+  cursor: pointer;
 }
+
+/* Input and textarea styling */
 .form-group input,
 .form-group textarea {
   padding: 1rem;
@@ -96,6 +145,7 @@ main {
   margin-bottom: 0.5rem;
   font-size: 1rem;
   width: 100%;
+  transition: border-color 0.3s;
 }
 
 .form-group textarea {
@@ -103,31 +153,20 @@ main {
   max-height: 300px;
 }
 
-/* Hide the default appearance of checkboxes and radio buttons */
-input[type="checkbox"],
-input[type="radio"] {
-  display: none;
-}
-
-/* Label styles for custom checkboxes */
-.custom-checkbox,
-.custom-radio {
-  display: inline-flex;
-  align-items: center;
+/* Hover and focus state for inputs and textarea */
+.form-group input:hover,
+.form-group textarea:hover {
+  border-color: var(--color-green-600-medium);
   cursor: pointer;
 }
 
-/* Add SVG to checkboxes and radios */
-.custom-checkbox svg,
-.custom-radio svg {
-  width: 24px;
-  height: 24px;
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 2;
-  transition: stroke 0.3s;
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-green-600-medium);
+  outline: none;
 }
 
+/* Submit button styling */
 button {
   padding: 1rem 2rem;
   border-radius: 0.5rem;
@@ -141,19 +180,19 @@ button {
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
-.message-container {
-  display: none;
-  margin-top: 2rem;
-  max-width: 300px;
-  padding: 1rem;
-  border-radius: 1rem;
-  background-color: var(--color-green-600-medium);
-  border-radius: 1rem;
+
+button:hover {
+  background-color: var(--color-green-700-darker);
 }
 
-.error {
+/* Error messages styling */
+span.error {
   display: none;
   color: var(--color-red);
+  font-size: 0.875rem;
+}
+input.error, textarea.error {
+  border: 1px solid var(--color-red);
 }
 
 footer .attribution {
